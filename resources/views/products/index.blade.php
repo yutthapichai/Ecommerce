@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@include('errors.session')
 <div class="container">
+  @include('errors.session')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -11,6 +11,9 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
+                            <th>
+                                  No
+                            </th>
                               <th>
                                     Name
                               </th>
@@ -27,6 +30,9 @@
                         <tbody>
                               @foreach($products as $product)
                                     <tr>
+                                          <td>
+                                            {{ $product->id }}
+                                          </td>
                                           <td>{{ $product->name }}</td>
                                           <td>{{ $product->price }}</td>
                                           <td>
@@ -46,6 +52,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mt-3">
+      {{ $products->links() }}
     </div>
 </div>
 @endsection

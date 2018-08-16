@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('products.index')->with('products', Product::all());
+        return view('products.index')->with('products', Product::paginate(10));
     }
 
     /**
@@ -128,7 +128,7 @@ class ProductsController extends Controller
     {
       $product = Product::find($id);
       if(file_exists($product->image)){
-        unlike($product->image);
+        unlink($product->image);
       }
       $product->delete();
       Session::flash('danger','your product has been deletes');

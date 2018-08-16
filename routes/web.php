@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontendController@index')->name('index');
+
+Route::get('/product/{id}', 'FrontendController@single')->name('product.single');
+
+Route::post('/cart/add', 'ShoppingController@add_to_cart')->name('cart.add');
+
+Route::get('/cart', 'ShoppingController@cart')->name('cart');
+
+Route::get('/cart/delete/{id}', 'ShoppingController@cart_delete')->name('cart.delete');
+
+Route::get('/cart/reduce/{id}/{qty}', 'ShoppingController@reduce')->name('cart.reduce');
+
+Route::get('/cart/recrement/{id}/{qty}', 'ShoppingController@recrement')->name('cart.recrement');
 
 Auth::routes();
 
