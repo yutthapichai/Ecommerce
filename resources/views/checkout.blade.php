@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-
+<div class="container">
   @include('errors.session')
+</div>
+<div class="container-fluid">
   <div class="row">
       <div class="col-lg-1">
       </div>
     <div class="col-lg-10">
       <h1 class="text-success text-center">Check out: {{ Cart::content()->count() }} item</h1>
+      @if(Cart::content()->count() > 0)
       <div class="card">
         <div class="card-body">
           <table class="table text-center">
@@ -50,6 +52,11 @@
           </table>
         </div>
       </div>
+      @else
+      <div class="text-center">
+        <a href="{{ route('index') }}" class="btn btn-secondary">Back</a>      
+      </div>
+      @endif
     </div>
     <div class="col-lg-1">
 
@@ -66,10 +73,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="{{ route('cart.checkout') }}" method="post">
+          {{ csrf_field() }}
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="custom-control custom-checkbox my-1 mr-sm-2">

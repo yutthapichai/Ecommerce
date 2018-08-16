@@ -54,7 +54,11 @@
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="/cart">
-                              Cost <span class="badge badge-pill badge-light">{{ Cart::total() }}</span>
+                              Cart <span class="badge badge-pill badge-light">{{ Cart::total() }}$</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('cart.checkout') }}">
+                              Check out
                             </a>
                           </div>
                         </li>
