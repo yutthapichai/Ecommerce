@@ -34,17 +34,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      @if(Auth::check())
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('products.create') }}">Create Product</a>
                       </li>
+                      @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(Cart::content()->count() > 0)
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle badge badge-pill badge-warning" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Basket <span class="badge badge-pill badge-light">{{ Cart::content()->count() }}</span>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="/cart">
+                              Cost <span class="badge badge-pill badge-light">{{ Cart::total() }}</span>
+                            </a>
+                          </div>
+                        </li>
+                        @endif
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

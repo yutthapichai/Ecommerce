@@ -8,12 +8,12 @@
       <div class="col-lg-1">
       </div>
     <div class="col-lg-10">
-      <h1 class="text-success">In your Shopping Cart: {{ Cart::content()->count() }} item</h1>
+      <h1 class="text-success text-center">Your Shopping Cart: {{ Cart::content()->count() }} item</h1>
       <div class="card">
         <div class="card-body">
           <table class="table">
             <thead>
-              <tr class="bg-info">
+              <tr class="bg-secondary text-white">
                 <th width="10%"></th>
                 <th width="20%">Product</th>
                 <th>Price</th>
@@ -50,8 +50,17 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>Cart Totals</td>
-                  <td>{{ Cart::total() }}</td>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ Cart::count() }}
+                  </td>
+                  <td>${{ Cart::total() }}</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><a href="{{ route('cart.checkout') }}" class="btn btn-primary float-right mt-3">Check out</a></td>
                 </tr>
             </tbody>
           </table>
@@ -61,6 +70,5 @@
     <div class="col-lg-1">
 
     </div>
-
 </div>
 @endsection

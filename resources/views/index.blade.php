@@ -13,7 +13,7 @@
               <p class="card-text">{{ str_limit($product->description, 100) }}</p>
               <h6>$ {{ $product->price }}</h6>
               <a href="{{ route('product.single', ['id' => $product->id]) }}" class="card-link text-light">Detail more..</a>
-              <a href="#" class="btn btn-primary float-right">Add to card</a>
+              <a href="{{ route('cart.rapid.add', ['id' => $product->id ]) }}" class="btn btn-primary float-right">Add to card</a>
             </div>
           </div>
         </div>

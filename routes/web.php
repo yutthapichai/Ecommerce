@@ -25,6 +25,10 @@ Route::get('/cart/reduce/{id}/{qty}', 'ShoppingController@reduce')->name('cart.r
 
 Route::get('/cart/recrement/{id}/{qty}', 'ShoppingController@recrement')->name('cart.recrement');
 
+Route::get('/cart/rapid/add/{id}', 'ShoppingController@rapid_add')->name('cart.rapid.add');
+
+Route::get('/cart/checkout', 'CheckoutController@index')->name('cart.checkout');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
